@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TwoSetsProblem",
+            "request": "launch",
+            "mainClass": "TwoSets.TwoSetsProblem",
+            "projectName": "Algoriths"
+        }
+    ]
+}

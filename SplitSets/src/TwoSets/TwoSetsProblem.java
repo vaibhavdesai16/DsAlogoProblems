@@ -2,42 +2,56 @@ package TwoSets;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.ListIterator;
+
 
 public class TwoSetsProblem {
 	
 	public static void main(String args[]) {
+
+	 ArrayList<Integer> list = new ArrayList<Integer>();
+	 for(int i= 1; i < 11; i ++){
+		 list.add(i);
+	 }
+	 	splitIntoSets(list);
 		
 	}
 	
-	public void splitIntoSets(List<Integer> list) {
-		ArrayList<Integer> values = new ArrayList<Integer>(list);
-		Collections.sort(values);
-		LinkedHashSet<Integer> uniqueValues = new LinkedHashSet<Integer>(values);
-		int mid = uniqueValues.size() / 2;
+	public static void splitIntoSets(List<Integer> list) {
+		Collections.sort(list);
+		LinkedHashSet<Integer> vaulesSet = new LinkedHashSet<Integer>(list);
+		ArrayList<Integer> list_of_unique = new ArrayList<Integer>(vaulesSet);
 		
+		int mid = list_of_unique.size() /2 ;
 		System.out.println(mid);
-		
-		Set<Integer> set1 = new LinkedHashSet<Integer>();
-		Set<Integer> set2 = new LinkedHashSet<Integer>();
-		int sum1 = 0;
-		int sum2 = 0;
-		
-		int i = 0;
-		for(int value: uniqueValues) {
-			if(i > mid) {
-				sum1 = sum1 + value;
-				set2.add(value);
-			}
-			else {
-				sum2 = sum2 + value;
-				set1.add(value);
-			}
+
+		List<Integer> list_of_lower = list_of_unique.subList(0, mid);
+		List<Integer> list_of_upper = list_of_unique.subList(mid, list_of_unique.size());
+
+		int sum_of_lower = 0;
+		int sum_of_upper = 0;
+
+		for (int var : list_of_lower) {
+			sum_of_lower +=  var;
 		}
-		
-		
+
+		for (int var : list_of_upper) {
+			sum_of_upper +=  var;
+		}
+
+		ListIterator iterator1 = list_of_lower.listIterator();
+		ListIterator intertor2 = list_of_upper.listIterator();
+
+
+		while(sum_of_lower < sum_of_upper){
+			list_of_lower.add(list_of_upper.get(0));
+			sum_of_lower +=  list_of_upper.get(0);
+			sum_of_upper -=  list_of_upper.get(0);
+			list_of_upper.remove(0);
+		}
 		
 	}
 
