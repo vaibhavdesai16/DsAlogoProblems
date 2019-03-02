@@ -2,8 +2,8 @@ package TwoSets;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -23,7 +23,7 @@ public class TwoSetsProblem {
 	public static void splitIntoSets(List<Integer> list) {
 		Collections.sort(list);
 		LinkedHashSet<Integer> vaulesSet = new LinkedHashSet<Integer>(list);
-		ArrayList<Integer> list_of_unique = new ArrayList<Integer>(vaulesSet);
+		LinkedList<Integer> list_of_unique = new LinkedList<Integer>(vaulesSet);
 		
 		int mid = list_of_unique.size() /2 ;
 		System.out.println(mid);
@@ -42,17 +42,13 @@ public class TwoSetsProblem {
 			sum_of_upper +=  var;
 		}
 
-		ListIterator iterator1 = list_of_lower.listIterator();
-		ListIterator intertor2 = list_of_upper.listIterator();
+		ListIterator<Integer> iterator1 = list_of_lower.listIterator();
+		ListIterator<Integer> iterator2 = list_of_upper.listIterator();
 
-
-		while(sum_of_lower < sum_of_upper){
-			list_of_lower.add(list_of_upper.get(0));
-			sum_of_lower +=  list_of_upper.get(0);
-			sum_of_upper -=  list_of_upper.get(0);
-			list_of_upper.remove(0);
-		}
 		
+		
+		
+
 	}
 
 }
