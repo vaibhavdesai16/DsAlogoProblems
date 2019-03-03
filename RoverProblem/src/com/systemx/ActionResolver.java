@@ -1,34 +1,30 @@
-import java.util.HashMap;
-import java.util.Hashtable;
+package com.systemx;
 
-/**
- * ActionResolver
- */
 public class ActionResolver {
 
     Compass compass;
 
-    ActionResolver(){
+    public ActionResolver(){
         compass = new Compass();
     }
 
    public Rover compuetNextCordinate(Rover rover)
    {
-        Char direction = roverState.getHeadRection();  
+        char direction = rover.getHeadRection();  
         switch(direction){
-            case E:
+            case 'E':
              rover.setPositionX(rover.getPositionX() + 1);
             break;
 
-            case W:
+            case 'W':
             rover.setPositionX(rover.getPositionX() - 1);
             break;
 
-            case S:
+            case 'S':
             rover.setPositionY(rover.getPositionY() - 1);
             break;
 
-            case N:
+            case 'N':
             rover.setPositionY(rover.getPositionY() + 1);
             break;
         }   
@@ -36,8 +32,15 @@ public class ActionResolver {
         return rover;
     }
 
-   public Rover changeDirection(Rover rover, Char direction){
-      compass.rotateCompass(rover, direction);
+   public Rover changeDirection(Rover rover, char direction){
+      return compass.rotateCompass(rover, direction);
+   }
+   
+   public Rover setInitialState(Rover rover,int positionX, int positionY, char haedDirection) {
+	   rover.setPositionX(positionX);
+	   rover.setPositionY(positionY);
+	   rover.setHeadRection(haedDirection);   
+	   return rover;
    }
 
 }
