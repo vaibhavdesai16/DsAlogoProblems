@@ -1,0 +1,7 @@
+Given an integer arr with N elements, the values of the array to be seperated into two subsets A & B (whoes intersection is null and union is an entire array) such that sum of values in a set A is strictly greater than the sum of the values in a set B, keeping in mind that number of elements in set A is minimum. Return the values in set A incresing order. if there are multiple sets that are possible solution, return that set that has minimum total sum of all its elements
+
+Constrains 
+
+1 <= n <= 10^5 length of array 
+
+1 <= arr(i) < 10^5 each element of array  
