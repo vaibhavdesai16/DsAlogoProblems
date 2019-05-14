@@ -42,12 +42,6 @@ public class TwoSetsProblem {
 			sum_of_upper +=  var;
 		}
 
-		ListIterator<Integer> iterator1 = list_of_lower.listIterator();
-		ListIterator<Integer> iterator2 = list_of_upper.listIterator();
-
-		
-		
-		
 
 	}
 
