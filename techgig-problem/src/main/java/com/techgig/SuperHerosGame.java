@@ -1,33 +1,57 @@
 package com.techgig;
 
 public class SuperHerosGame {
-	
+
 	public boolean energyLevelComparison(int[] player, int[] villan, int energy_levels) {
 		boolean iswin = true;
-		
-		for(int i=0; i<energy_levels; i++) {
-			for(int j=0; j<energy_levels-1; j++) {
-				
-				if(player[j+1] < player[j]) {
-					int temp = player[j+1];
-					player[j+1] = player[j];
-					player[j] = temp;
-				}
-				
-				if(villan[j+1] < villan[j]) {
-					int temp = villan[j+1];
-					villan[j+1] = villan[j];
-					villan[j] = temp;
-				}
-			}
-		}
-		
-		for(int i=0; i<energy_levels; i++) {
-			if( !(player[i] > villan[i])) {
+
+		mergeSort(player, energy_levels);
+		mergeSort(villan, energy_levels);
+
+		for (int i = 0; i < energy_levels; i++) {
+			if (!(player[i] > villan[i])) {
 				iswin = false;
 			}
 		}
 		return iswin;
+	}
+
+	public void mergeSort(int[] a, int n) {
+		if (n < 2) {
+			return;
+		}
+		int mid = n / 2;
+		int[] l = new int[mid];
+		int[] r = new int[n - mid];
+
+		for (int i = 0; i < mid; i++) {
+			l[i] = a[i];
+		}
+		for (int i = mid; i < n; i++) {
+			r[i - mid] = a[i];
+		}
+		mergeSort(l, mid);
+		mergeSort(r, n - mid);
+
+		merge(a, l, r, mid, n - mid);
+	}
+
+	public void merge(int[] a, int[] l, int[] r, int left, int right) {
+
+		int i = 0, j = 0, k = 0;
+		while (i < left && j < right) {
+			if (l[i] <= r[j]) {
+				a[k++] = l[i++];
+			} else {
+				a[k++] = r[j++];
+			}
+		}
+		while (i < left) {
+			a[k++] = l[i++];
+		}
+		while (j < right) {
+			a[k++] = r[j++];
+		}
 	}
 
 }
